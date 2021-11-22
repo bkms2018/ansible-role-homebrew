@@ -13,6 +13,10 @@
   become: true
   when: "ansible_distribution_version is version('10.13', '>=')"
 
+- name: Print the homebrew_prefix
+  ansible.builtin.debug:
+    msg: prefix is {{ homebrew_prefix }}
+  
 - name: Ensure Homebrew parent directory has correct permissions (MacOS < 10.13).
   file:
     path: "{{ homebrew_prefix }}"
